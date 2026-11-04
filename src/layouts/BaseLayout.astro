@@ -1,7 +1,10 @@
+
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+const maintenanceMode = true;
 
 const {
   title,
@@ -10,13 +13,16 @@ const {
   noindex = false,
 } = Astro.props;
 
-const pageTitle = title
-  ? `${title} | Everyday Decision Tools`
-  : 'Everyday Decision Tools | Make everyday choices with confidence';
+const pageTitle = maintenanceMode
+  ? 'Temporarily Unavailable | Everyday Decision Tools'
+  : title
+    ? `${title} | Everyday Decision Tools`
+    : 'Everyday Decision Tools | Make everyday choices with confidence';
 
-const pageDescription =
-  description ||
-  'Free, practical calculators that help you compare everyday costs and make smarter purchase decisions.';
+const pageDescription = maintenanceMode
+  ? 'Everyday Decision Tools is temporarily unavailable while we make improvements. Please check back soon.'
+  : description ||
+    'Free, practical calculators that help you compare everyday costs and make smarter purchase decisions.';
 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL('/og-image.png', Astro.site).href;
@@ -33,7 +39,10 @@ const ogImageUrl = new URL('/og-image.png', Astro.site).href;
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta
+      name="robots"
+      content={maintenanceMode ? 'noindex, nofollow' : noindex ? 'noindex, nofollow' : 'index, follow'}
+    />
 
     <link rel="canonical" href={canonicalUrl} />
 
@@ -60,12 +69,83 @@ const ogImageUrl = new URL('/og-image.png', Astro.site).href;
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content="Everyday Decision Tools — free calculators for smarter everyday spending." />
+
+    {maintenanceMode && (
+      <style>
+        {`
+          .maintenance-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 20px;
+            background: #f7f8f5;
+            text-align: center;
+          }
+
+          .maintenance-content {
+            width: 100%;
+            max-width: 560px;
+          }
+
+          .maintenance-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+          }
+
+          .maintenance-content h1 {
+            margin: 0 0 18px;
+            color: #24352c;
+            font-size: clamp(30px, 6vw, 42px);
+            line-height: 1.2;
+          }
+
+          .maintenance-content p {
+            margin: 0 auto 14px;
+            color: #66736b;
+            font-size: 16px;
+            line-height: 1.8;
+          }
+
+          .maintenance-label {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            background: #e7eee8;
+            color: #42634d;
+            font-size: 13px;
+            font-weight: 600;
+          }
+        `}
+      </style>
+    )}
   </head>
 
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
-    <main id="main"><slot /></main>
-    <Footer />
+    {maintenanceMode ? (
+      <main class="maintenance-page">
+        <div class="maintenance-content">
+          <div class="maintenance-icon">🛠️</div>
+          <span class="maintenance-label">Scheduled Maintenance</span>
+          <h1>We'll Be Back Soon</h1>
+          <p>
+            Everyday Decision Tools is temporarily unavailable while we're
+            working on improvements.
+          </p>
+          <p>
+            We're making things better for you. Please check back soon.
+          </p>
+          <p>Thank you for your patience!</p>
+        </div>
+      </main>
+    ) : (
+      <>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <Header />
+        <main id="main"><slot /></main>
+        <Footer />
+      </>
+    )}
   </body>
 </html>

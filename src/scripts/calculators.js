@@ -1,3 +1,4 @@
+
 const money = (value, digits = 2) => new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -10,6 +11,9 @@ const number = (root, name) =>
 
 const valid = (...values) =>
   values.every((value) => Number.isFinite(value) && value >= 0);
+
+const hasInput = (...values) =>
+  values.some((value) => value !== 0);
 
 const unitInfo = {
   oz: { category: 'weight', factor: 1, label: 'oz' },
@@ -43,9 +47,14 @@ function update(root) {
       unit: root.querySelector('[data-field="unitB"]').value
     };
 
-    if (!valid(a.price, b.price) || a.qty <= 0 || b.qty <= 0) {
+    if (!valid(a.price, b.price, a.qty, b.qty)) {
       headline = 'Check your values';
-      explanation = 'Prices must be zero or more, and quantities must be greater than zero.';
+      explanation = 'Enter valid numbers of zero or more.';
+    } else if (a.qty === 0 || b.qty === 0) {
+      if (hasInput(a.price, a.qty, b.price, b.qty)) {
+        headline = 'Enter package quantities';
+        explanation = 'Both package quantities must be greater than zero to compare unit prices.';
+      }
     } else {
       const infoA = unitInfo[a.unit];
       const infoB = unitInfo[b.unit];
@@ -82,9 +91,14 @@ function update(root) {
     const uses = number(root, 'uses');
     const extras = number(root, 'extras');
 
-    if (!valid(price, extras) || !Number.isFinite(uses) || uses <= 0) {
+    if (!valid(price, extras, uses)) {
       headline = 'Check your values';
-      explanation = 'Enter costs of zero or more and at least one expected use.';
+      explanation = 'Enter valid numbers of zero or more.';
+    } else if (uses === 0) {
+      if (hasInput(price, extras, uses)) {
+        headline = 'Enter expected uses';
+        explanation = 'Expected uses must be greater than zero.';
+      }
     } else {
       const total = price + extras;
       headline = `${money(total / uses)} per use`;
@@ -97,9 +111,14 @@ function update(root) {
     const mpg = number(root, 'mpg');
     const gasPrice = number(root, 'gasPrice');
 
-    if (!valid(distance, gasPrice) || !Number.isFinite(mpg) || mpg <= 0) {
+    if (!valid(distance, gasPrice, mpg)) {
       headline = 'Check your values';
-      explanation = 'Distance and gas price must be zero or more; MPG must be greater than zero.';
+      explanation = 'Enter valid numbers of zero or more.';
+    } else if (mpg === 0) {
+      if (hasInput(distance, mpg, gasPrice)) {
+        headline = 'Enter fuel efficiency';
+        explanation = 'MPG must be greater than zero to calculate fuel cost.';
+      }
     } else {
       const gallons = distance / mpg;
       headline = money(gallons * gasPrice);
@@ -110,15 +129,47 @@ function update(root) {
   if (type === 'subscription-cost') {
     const payment = number(root, 'payment');
     const frequency = root.querySelector('[data-field="frequency"]').value;
-    const annualPayments = { weekly: 52, monthly: 12, quarterly: 4, yearly: 1 }[frequency];
 
-    if (!valid(payment)) {
-      headline = 'Check your payment';
-      explanation = 'Enter a payment amount of zero or more.';
+    const annualPayments = {
+      daily: 365,
+      weekly: 52,
+      monthly: 12,
+      quarterly: 4,
+      'half-yearly': 2,
+      yearly: 1
+    }[frequency];
+
+    if (!valid(payment) || !annualPayments) {
+      headline = 'Check your values';
+      explanation = 'Enter a valid payment amount and billing frequency.';
+    } else if (payment === 0) {
+      headline = 'Enter your payment';
+      explanation = 'Enter a payment amount greater than zero to calculate subscription costs.';
     } else {
       const annual = payment * annualPayments;
+
+      const costs = {
+        daily: annual / 365,
+        weekly: annual / 52,
+        monthly: annual / 12,
+        quarterly: annual / 4,
+        'half-yearly': annual / 2,
+        yearly: annual
+      };
+
+      Object.entries(costs).forEach(([period, cost]) => {
+        const output = root.querySelector(`[data-period-result="${period}"]`);
+        if (output) output.textContent = money(cost);
+      });
+
       headline = `${money(annual)} per year`;
-      explanation = `${money(annual / 12)} per month on average, billed ${frequency === 'quarterly' ? 'every three months' : frequency}.`;
+      explanation = 'Annual subscription cost.';
+    }
+
+    if (payment === 0 || !valid(payment) || !annualPayments) {
+      root.querySelectorAll('[data-period-result]').forEach((output) => {
+        output.textContent = '$0.00';
+      });
     }
   }
 

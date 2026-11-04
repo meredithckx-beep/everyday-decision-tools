@@ -1,7 +1,63 @@
+
 ---
 import ToolShell from '../../components/ToolShell.astro';
 ---
-<ToolShell title="Gas Cost Calculator" category="Transportation" toolId="gas-cost" description="Estimate how much gas will cost for a road trip based on distance, vehicle fuel economy, and gas price." intro="Plan a drive with a quick fuel-cost estimate. Adjust the distance, MPG, and local gas price to see your expected spend." steps={['Enter the total round-trip distance in miles.','Add your vehicle’s fuel economy in miles per gallon (MPG).','Enter the price per gallon of gas.','Review the estimated gallons and total fuel cost.']} note="This estimate assumes consistent fuel economy and gas prices. Traffic, terrain, weather, load, and driving style can change actual fuel use.">
-  <h2>Estimate your trip fuel cost</h2><p class="form-intro">Use your vehicle’s typical MPG for a more useful estimate.</p>
-  <div class="field-grid"><div class="field"><label for="distance">Trip distance (miles)</label><input id="distance" data-field="distance" type="number" min="0" step="1" value="250" /></div><div class="field"><label for="mpg">Fuel economy (MPG)</label><input id="mpg" data-field="mpg" type="number" min="0.1" step="0.1" value="28" /></div><div class="field field-full"><label for="gas-price">Gas price per gallon ($)</label><div class="input-wrap"><span>$</span><input id="gas-price" data-field="gasPrice" type="number" min="0" step="0.001" value="3.49" /></div></div></div>
+
+<ToolShell
+  title="Gas Cost Calculator"
+  category="Transportation"
+  toolId="gas-cost"
+  description="Estimate how much gas will cost for a road trip based on distance, vehicle fuel economy, and gas price."
+  intro="Plan a drive with a quick fuel-cost estimate. Adjust the distance, MPG, and local gas price to see your expected spend."
+  steps={[
+    'Enter the total round-trip distance in miles.',
+    'Add your vehicle’s fuel economy in miles per gallon (MPG).',
+    'Enter the price per gallon of gas.',
+    'Review the estimated gallons and total fuel cost.'
+  ]}
+  note="This estimate assumes consistent fuel economy and gas prices. Traffic, terrain, weather, load, and driving style can change actual fuel use."
+>
+  <h2>Estimate your trip fuel cost</h2>
+  <p class="form-intro">Use your vehicle’s typical MPG for a more useful estimate.</p>
+
+  <div class="field-grid">
+    <div class="field">
+      <label for="distance">Trip distance (miles)</label>
+      <input
+        id="distance"
+        data-field="distance"
+        type="number"
+        min="0"
+        step="1"
+        value="0"
+      />
+    </div>
+
+    <div class="field">
+      <label for="mpg">Fuel economy (MPG)</label>
+      <input
+        id="mpg"
+        data-field="mpg"
+        type="number"
+        min="0"
+        step="0.1"
+        value="0"
+      />
+    </div>
+
+    <div class="field field-full">
+      <label for="gas-price">Gas price per gallon ($)</label>
+      <div class="input-wrap">
+        <span>$</span>
+        <input
+          id="gas-price"
+          data-field="gasPrice"
+          type="number"
+          min="0"
+          step="0.001"
+          value="0"
+        />
+      </div>
+    </div>
+  </div>
 </ToolShell>
