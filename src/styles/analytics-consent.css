@@ -1,0 +1,126 @@
+
+.analytics-consent[hidden] {
+  display: none;
+}
+
+.analytics-consent {
+  position: fixed;
+  z-index: 1000;
+  inset: auto 0 0;
+  padding: 22px 24px;
+  background: #151719;
+  border-top: 1px solid var(--line, #343a36);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+  color: #f0f2ef;
+}
+
+.analytics-consent__inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.analytics-consent__content {
+  max-width: 650px;
+}
+
+.analytics-consent__content h2 {
+  margin: 0 0 7px;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
+
+.analytics-consent__content p {
+  margin: 0;
+  color: #aab2ac;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.analytics-consent__content a {
+  color: var(--green, #9ac9aa);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.analytics-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.analytics-consent__button {
+  min-height: 42px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.analytics-consent__button--accept {
+  background: var(--green, #9ac9aa);
+  border: 1px solid var(--green, #9ac9aa);
+  color: #101613;
+}
+
+.analytics-consent__button--accept:hover {
+  background: #b3d7bf;
+}
+
+.analytics-consent__button--reject {
+  background: transparent;
+  border: 1px solid #59625c;
+  color: #e0e5e1;
+}
+
+.analytics-consent__button--reject:hover {
+  background: #29312c;
+}
+
+.privacy-settings-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.privacy-settings-button:hover {
+  color: var(--green);
+}
+
+.analytics-consent__button:focus-visible,
+.privacy-settings-button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .analytics-consent {
+    padding: 20px 17px;
+  }
+
+  .analytics-consent__inner {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .analytics-consent__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .analytics-consent__button {
+    width: 100%;
+  }
+}
