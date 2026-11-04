@@ -1,69 +1,13 @@
 ---
 import ToolShell from '../../components/ToolShell.astro';
+const units = [{value:'g',label:'grams (g)'},{value:'kg',label:'kilograms (kg)'},{value:'oz',label:'ounces (oz)'},{value:'lb',label:'pounds (lb)'},{value:'ml',label:'milliliters (mL)'},{value:'l',label:'liters (L)'},{value:'floz',label:'US fluid ounces (fl oz)'},{value:'each',label:'items (each)'}];
 ---
-
-<ToolShell
-  title="Unit Price Calculator"
-  category="Shopping"
-  toolId="unit-price"
-  description="Compare product unit prices to find the better deal. Calculate cost per ounce, pound, item, or another unit."
-  intro="Compare two products by the amount you get for the price. Find the lower cost per unit before you buy."
-  steps={[
-    "Enter each product's total price.",
-    "Enter the quantity in each package.",
-    "Choose the unit shown on each product's package.",
-    "Compare the cost per unit to see which is cheaper."
-  ]}
-  note="For a fair comparison, use the same measurement category for both products. This calculator automatically converts compatible units. It does not include taxes, coupons, or shipping."
->
-  <h2>Compare two products</h2>
-  <p class="form-intro">Enter the price and package size for each option.</p>
-
-  <div class="compare-fields">
-    <fieldset class="product-field">
-      <legend>Product A</legend>
-
-      <label for="price-a">Price ($)</label>
-      <div class="input-wrap">
-        <span>$</span>
-        <input id="price-a" data-field="priceA" type="number" min="0" step="0.01" value="0" />
-      </div>
-
-      <label for="qty-a">Package quantity</label>
-      <input id="qty-a" data-field="qtyA" type="number" min="0" step="any" value="0" />
-
-      <label for="unit-a">Unit</label>
-      <select id="unit-a" data-field="unitA">
-        <option value="oz">ounces (oz)</option>
-        <option value="lb">pounds (lb)</option>
-        <option value="count">items</option>
-        <option value="fl oz">fluid ounces (fl oz)</option>
-        <option value="g">grams (g)</option>
-        <option value="ml">milliliters (mL)</option>
-      </select>
-    </fieldset>
-
-    <fieldset class="product-field">
-      <legend>Product B</legend>
-
-      <label for="price-b">Price ($)</label>
-      <div class="input-wrap">
-        <span>$</span>
-        <input id="price-b" data-field="priceB" type="number" min="0" step="0.01" value="0" />
-      </div>
-
-      <label for="qty-b">Package quantity</label>
-      <input id="qty-b" data-field="qtyB" type="number" min="0" step="any" value="0" />
-
-      <label for="unit-b">Unit</label>
-      <select id="unit-b" data-field="unitB">
-        <option value="oz">ounces (oz)</option>
-        <option value="lb">pounds (lb)</option>
-        <option value="count">items</option>
-        <option value="fl oz">fluid ounces (fl oz)</option>
-        <option value="g">grams (g)</option>
-        <option value="ml">milliliters (mL)</option>
-      </select>
-    </fieldset>
+<ToolShell title="Unit Price Calculator" category="Shopping" toolId="unit-price" description="Compare compatible product unit prices across package sizes." intro="Compare two or more products by the amount you get for the price. Compatible units are converted automatically." steps={["Enter an optional product name, price, and package quantity for each product.","Choose the package unit. Compatible units such as grams and kilograms are converted automatically.","Add another product if needed, then compare unit prices and equivalent-basket costs."]} note="Compares costs only, not product quality.">
+  <h2>Compare product prices</h2><p class="form-intro">Start with two products. Product names are optional.</p>
+  <div id="products" class="compare-fields">
+    {['A','B'].map((letter) => <fieldset class="product-field product-entry"><legend>Product {letter}</legend><label>Product name <span class="optional">Optional</span></label><input data-product-name placeholder="e.g. Brand or product" type="text" /><label>Price ($)</label><div class="input-wrap"><span>$</span><input data-price type="number" min="0" step="0.01" value="0" /></div><label>Package quantity</label><input data-quantity type="number" min="0" step="any" value="0" /><label>Unit</label><select data-unit>{units.map((unit) => <option value={unit.value}>{unit.label}</option>)}</select></fieldset>)}
   </div>
+  <div class="calculator-actions"><button type="button" class="button button-secondary" id="add-product">+ Add another product</button></div>
+  <div class="comparison-output" id="unit-comparison" aria-live="polite"><p>Enter package quantities greater than zero to compare.</p></div>
+  <template id="product-template"><fieldset class="product-field product-entry"><legend>Product</legend><button type="button" class="remove-product" aria-label="Remove product">Remove</button><label>Product name <span class="optional">Optional</span></label><input data-product-name placeholder="e.g. Brand or product" type="text" /><label>Price ($)</label><div class="input-wrap"><span>$</span><input data-price type="number" min="0" step="0.01" value="0" /></div><label>Package quantity</label><input data-quantity type="number" min="0" step="any" value="0" /><label>Unit</label><select data-unit>{units.map((unit) => <option value={unit.value}>{unit.label}</option>)}</select></fieldset></template>
 </ToolShell>

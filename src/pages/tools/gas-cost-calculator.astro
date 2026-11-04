@@ -1,63 +1,14 @@
-
 ---
 import ToolShell from '../../components/ToolShell.astro';
 ---
-
-<ToolShell
-  title="Gas Cost Calculator"
-  category="Transportation"
-  toolId="gas-cost"
-  description="Estimate how much gas will cost for a road trip based on distance, vehicle fuel economy, and gas price."
-  intro="Plan a drive with a quick fuel-cost estimate. Adjust the distance, MPG, and local gas price to see your expected spend."
-  steps={[
-    'Enter the total round-trip distance in miles.',
-    'Add your vehicle’s fuel economy in miles per gallon (MPG).',
-    'Enter the price per gallon of gas.',
-    'Review the estimated gallons and total fuel cost.'
-  ]}
-  note="This estimate assumes consistent fuel economy and gas prices. Traffic, terrain, weather, load, and driving style can change actual fuel use."
->
-  <h2>Estimate your trip fuel cost</h2>
-  <p class="form-intro">Use your vehicle’s typical MPG for a more useful estimate.</p>
-
-  <div class="field-grid">
-    <div class="field">
-      <label for="distance">Trip distance (miles)</label>
-      <input
-        id="distance"
-        data-field="distance"
-        type="number"
-        min="0"
-        step="1"
-        value="0"
-      />
-    </div>
-
-    <div class="field">
-      <label for="mpg">Fuel economy (MPG)</label>
-      <input
-        id="mpg"
-        data-field="mpg"
-        type="number"
-        min="0"
-        step="0.1"
-        value="0"
-      />
-    </div>
-
-    <div class="field field-full">
-      <label for="gas-price">Gas price per gallon ($)</label>
-      <div class="input-wrap">
-        <span>$</span>
-        <input
-          id="gas-price"
-          data-field="gasPrice"
-          type="number"
-          min="0"
-          step="0.001"
-          value="0"
-        />
-      </div>
-    </div>
+<ToolShell title="Gas Cost Calculator" category="Transportation" toolId="gas-cost" description="Estimate fuel used and total trip fuel costs with flexible units." intro="Enter a distance, fuel efficiency, and local fuel price. Switch units to match the numbers you normally use." steps={["Enter your total trip distance.","Choose miles or kilometers.","Enter fuel efficiency in US MPG, L/100 km, or km/L.","Enter the fuel price per US gallon or liter."]} note="US MPG is used, not Imperial MPG. Estimates assume consistent fuel economy and fuel prices; traffic, terrain, weather, and driving style affect actual use.">
+  <h2>Estimate your fuel cost</h2><div class="field-grid">
+    <div class="field"><label for="distance">Distance</label><input id="distance" data-field="distance" type="number" min="0" step="any" value="0" /></div>
+    <div class="field"><label for="distance-unit">Distance unit</label><select id="distance-unit" data-field="distanceUnit"><option value="mi">Miles (mi)</option><option value="km">Kilometers (km)</option></select></div>
+    <div class="field"><label for="efficiency">Fuel efficiency</label><input id="efficiency" data-field="efficiency" type="number" min="0" step="any" value="0" /></div>
+    <div class="field"><label for="efficiency-unit">Efficiency unit</label><select id="efficiency-unit" data-field="efficiencyUnit"><option value="mpg">US MPG</option><option value="l100">L/100 km</option><option value="kml">km/L</option></select></div>
+    <div class="field field-full"><label for="fuel-price">Fuel price</label><div class="input-wrap"><span>$</span><input id="fuel-price" data-field="fuelPrice" type="number" min="0" step="any" value="0" /></div></div>
+    <div class="field field-full"><label for="price-unit">Fuel price unit</label><select id="price-unit" data-field="priceUnit"><option value="gal">USD per US gallon</option><option value="liter">USD per liter</option></select></div>
   </div>
+  <div class="metric-grid"><div class="metric"><span>Estimated fuel used</span><strong data-gas-fuel>—</strong></div><div class="metric"><span>Total fuel cost</span><strong data-gas-total>—</strong></div><div class="metric"><span>Cost per distance</span><strong data-gas-unit>—</strong></div></div>
 </ToolShell>

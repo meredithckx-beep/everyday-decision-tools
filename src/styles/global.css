@@ -65,6 +65,7 @@ select {
   background: var(--white);
   color: var(--ink);
   z-index: 20;
+  font-size: 14px;
 }
 
 .skip-link:focus {
@@ -113,7 +114,7 @@ select {
 }
 
 .brand-name {
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: -.3px;
   color: var(--ink);
 }
@@ -126,7 +127,7 @@ select {
   display: flex;
   align-items: center;
   gap: 30px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--muted);
 }
@@ -162,7 +163,7 @@ select {
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 1.8px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--muted);
   display: flex;
@@ -205,7 +206,7 @@ h2 em {
 
 .hero-lead,
 .lead {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.8;
   color: var(--muted);
   max-width: 535px;
@@ -225,7 +226,7 @@ h2 em {
   gap: 12px;
   padding: 13px 19px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   transition: background .2s, transform .2s;
 }
@@ -244,7 +245,7 @@ h2 em {
 }
 
 .trust-note {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 
@@ -438,13 +439,13 @@ h2 em {
 }
 
 .proof-inner span {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 
 .proof-inner b {
   color: #64716a;
-  font-size: 10px;
+  font-size: 11px;
   margin-right: 9px;
 }
 
@@ -468,7 +469,7 @@ h2 em {
 }
 
 .text-link {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--green);
   border-bottom: 1px solid #526c5b;
@@ -520,7 +521,7 @@ h2 em {
 }
 
 .tool-category {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   background: #252a2e;
   padding: 5px 9px;
@@ -528,21 +529,21 @@ h2 em {
 }
 
 .tool-card h3 {
-  font-size: 16px;
+  font-size: 17px;
   letter-spacing: -.3px;
   margin: 0 0 9px;
 }
 
 .tool-card p {
-  font-size: 12px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.75;
   color: var(--muted);
   margin: 0 0 20px;
 }
 
 .tool-card-link {
   margin-top: auto;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--green);
 }
@@ -566,7 +567,7 @@ h2 em {
 .value-copy {
   max-width: 490px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.9;
 }
 
@@ -625,20 +626,21 @@ h2 em {
 
 .footer-brand p {
   margin: 13px 0 0;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
+  line-height: 1.7;
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
   gap: 9px;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 
 .footer-heading {
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   color: var(--green);
@@ -652,7 +654,7 @@ h2 em {
   display: flex;
   justify-content: space-between;
   color: #7f8982;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* General pages */
@@ -675,7 +677,7 @@ h2 em {
 }
 
 .prose {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.9;
   color: var(--muted);
 }
@@ -718,7 +720,7 @@ h2 em {
 }
 
 .small-print {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 
@@ -728,7 +730,7 @@ h2 em {
 }
 
 .error-code {
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 3px;
   color: var(--green);
 }
@@ -743,7 +745,7 @@ h2 em {
 
 .back-link {
   display: inline-block;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin-bottom: 22px;
 }
@@ -759,7 +761,7 @@ h2 em {
 }
 
 .tool-hero .lead {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .calculator-layout {
@@ -784,7 +786,8 @@ h2 em {
 }
 
 .form-intro {
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--muted);
   margin-bottom: 24px;
 }
@@ -804,14 +807,14 @@ h2 em {
 }
 
 .product-field legend {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   padding: 0 6px;
 }
 
 .calculator-card label {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   color: #c0c7c2;
   margin: 13px 0 6px;
@@ -827,7 +830,7 @@ h2 em {
   padding: 0 12px;
   color: var(--ink);
   outline: none;
-  font-size: 13px;
+  font-size: 14px;
   color-scheme: dark;
 }
 
@@ -846,7 +849,7 @@ h2 em {
   left: 12px;
   top: 9px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .input-wrap input {
@@ -883,7 +886,7 @@ h2 em {
   display: block;
   text-transform: uppercase;
   letter-spacing: 1.3px;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   color: #a5b9aa;
 }
@@ -897,7 +900,8 @@ h2 em {
 }
 
 .result-detail {
-  font-size: 11px;
+  font-size: 13px;
+  line-height: 1.65;
   color: #bdc9c0;
   margin: 0;
 }
@@ -918,7 +922,7 @@ h2 em {
   padding-left: 19px;
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -934,7 +938,8 @@ h2 em {
   border-radius: 7px;
   padding: 15px;
   color: #b5c2b9;
-  font-size: 11px;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .aside-note > span {
@@ -1012,7 +1017,7 @@ a:focus-visible {
   }
 
   .brand-name {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .brand-mark {
@@ -1022,7 +1027,7 @@ a:focus-visible {
 
   .main-nav {
     gap: 12px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .main-nav > a:first-child {
@@ -1043,7 +1048,7 @@ a:focus-visible {
   }
 
   .hero-lead {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .hero-actions {
@@ -1145,7 +1150,7 @@ a:focus-visible {
   }
 
   .lead {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .contact-panel {
@@ -1192,5 +1197,370 @@ a:focus-visible {
   *::before,
   *::after {
     transition: none !important;
+  }
+}
+
+/* Calculator enhancements */
+
+.tool-step-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tool-step-nav a {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.tool-step-nav span {
+  font-variant-numeric: tabular-nums;
+}
+
+.calculator-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.button-secondary {
+  background: #29342e;
+  border: 1px solid #465b4c;
+  color: #a9cbb4;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background: #34463a;
+}
+
+.remove-product {
+  float: right;
+  border: 1px solid #654b43;
+  background: #342724;
+  color: #e3b6a8;
+  border-radius: 5px;
+  padding: 5px 9px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.comparison-output {
+  margin-top: 18px;
+  padding: 17px;
+  background: #1a2020;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.comparison-winner {
+  color: #a0d0ae;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.comparison-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  margin: 0;
+}
+
+.comparison-row strong {
+  color: var(--ink);
+}
+
+.comparison-row span {
+  text-align: right;
+}
+
+.comparison-foot {
+  font-size: 13px;
+  margin: 12px 0 0;
+  line-height: 1.7;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.metric {
+  min-width: 0;
+  padding: 14px;
+  background: #1d2225;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+
+.metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 7px;
+}
+
+.metric strong {
+  font-size: 17px;
+  color: var(--green);
+  overflow-wrap: anywhere;
+}
+
+.six-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sub-compare {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.sub-compare h2 {
+  margin-bottom: 5px;
+}
+
+.sub-compare .metric-grid {
+  margin-top: 15px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-label input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--green);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.related-section {
+  padding-top: 20px;
+}
+
+.related-section .tool-card {
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .metric-grid,
+  .six-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .comparison-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .comparison-row span {
+    text-align: left;
+  }
+
+  .tool-step-nav {
+    font-size: 12px;
+  }
+
+  .calculator-actions .button {
+    width: 100%;
+  }
+}
+
+/* Global readability upgrade - second pass */
+
+body {
+  font-size: 17px;
+}
+
+.main-nav {
+  font-size: 15px;
+}
+
+.hero-lead,
+.lead {
+  font-size: 18px;
+}
+
+.hero-lead {
+  line-height: 1.85;
+}
+
+.trust-note {
+  font-size: 14px;
+}
+
+.proof-inner span {
+  font-size: 14px;
+}
+
+.section-heading .text-link,
+.text-link {
+  font-size: 15px;
+}
+
+.tool-category {
+  font-size: 13px;
+}
+
+.tool-card h3 {
+  font-size: 18px;
+}
+
+.tool-card p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.tool-card-link {
+  font-size: 14px;
+}
+
+.value-copy {
+  font-size: 17px;
+}
+
+.footer-brand p,
+.footer-links {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-heading {
+  font-size: 13px;
+}
+
+.footer-bottom {
+  font-size: 13px;
+}
+
+.prose {
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.small-print,
+.back-link {
+  font-size: 14px;
+}
+
+.page-hero .lead,
+.tool-hero .lead {
+  font-size: 17px;
+}
+
+.form-intro {
+  font-size: 16px;
+}
+
+.calculator-card label {
+  font-size: 15px;
+}
+
+.calculator-card input,
+.calculator-card select {
+  font-size: 16px;
+}
+
+.input-wrap > span {
+  font-size: 15px;
+}
+
+.product-field legend {
+  font-size: 15px;
+}
+
+.result-label {
+  font-size: 11px;
+}
+
+.result-detail {
+  font-size: 15px;
+}
+
+.aside-card ol {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.aside-note {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.tool-step-nav {
+  font-size: 14px;
+}
+
+.comparison-output {
+  font-size: 16px;
+}
+
+.comparison-foot {
+  font-size: 15px;
+}
+
+.metric span {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.remove-product {
+  font-size: 13px;
+}
+
+.eyebrow {
+  font-size: 12px;
+}
+
+@media (max-width: 560px) {
+  .main-nav {
+    font-size: 13px;
+  }
+
+  .hero-lead,
+  .lead {
+    font-size: 17px;
+  }
+
+  .tool-card p {
+    font-size: 16px;
+  }
+
+  .prose {
+    font-size: 16px;
+  }
+
+  .page-hero .lead,
+  .tool-hero .lead {
+    font-size: 16px;
+  }
+
+  .tool-step-nav {
+    font-size: 13px;
+  }
+
+  .footer-brand p,
+  .footer-links {
+    font-size: 14px;
   }
 }

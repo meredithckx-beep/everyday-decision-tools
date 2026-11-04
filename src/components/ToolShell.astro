@@ -1,43 +1,20 @@
-﻿---
+---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const { title, description, intro, category, toolId, steps, note } = Astro.props;
+import { tools } from '../data.js';
+const { title, description, intro, category, toolId, steps = [], note = '' } = Astro.props;
+const slug = Astro.url.pathname.split('/').filter(Boolean).at(-1);
+const index = tools.findIndex((tool) => tool.slug === slug);
+const previous = tools[(index - 1 + tools.length) % tools.length];
+const next = tools[(index + 1) % tools.length];
+const related = tools.filter((tool) => tool.slug !== slug).slice(0, 3);
 ---
 <BaseLayout title={title} description={description}>
-  <section class="tool-hero">
-    <div class="container narrow">
-      <a class="back-link" href="/tools/">&#8592; All tools</a>
-      <div class="eyebrow">{category} calculator</div>
-      <h1>{title}</h1>
-      <p class="lead">{intro}</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container calculator-layout">
-      <div class="calculator-card" data-calculator={toolId}>
-        <slot />
-        <div class="result-panel" aria-live="polite" aria-atomic="true">
-          <span class="result-label">Your result</span>
-          <strong class="result-value" data-result>Enter your numbers</strong>
-          <p class="result-detail" data-detail>Results update as you change the values.</p>
-        </div>
-      </div>
-
-      <aside class="tool-aside">
-        <div class="aside-card">
-          <h2>How it works</h2>
-          <ol>
-            {steps.map((step) => <li>{step}</li>)}
-          </ol>
-        </div>
-
-        <div class="aside-note">
-          <span aria-hidden="true">&#9432;</span>
-          <p>{note}</p>
-        </div>
-      </aside>
-    </div>
-  </section>
-
+  <section class="tool-hero"><div class="container narrow"><a class="back-link" href="/tools/">← All tools</a><div class="eyebrow">{category} calculator · {index + 1} / {tools.length}</div><h1>{title}</h1><p class="lead">{intro}</p>
+    <nav class="tool-step-nav" aria-label="Calculator navigation"><a href={`/tools/${previous.slug}/`}>← Previous</a><span>{index + 1} / {tools.length}</span><a href={`/tools/${next.slug}/`}>Next →</a></nav>
+  </div></section>
+  <section class="section"><div class="container calculator-layout"><div class="calculator-card" data-calculator={toolId}><slot /><div class="result-panel" aria-live="polite" aria-atomic="true"><span class="result-label">Your result</span><strong class="result-value" data-result>Enter your numbers</strong><p class="result-detail" data-detail>Results update as you change the values.</p></div></div>
+    <aside class="tool-aside"><div class="aside-card"><h2>How it works</h2><ol>{steps.map((step) => <li>{step}</li>)}</ol></div><div class="aside-note"><span aria-hidden="true">ⓘ</span><p>{note}</p></div></aside>
+  </div></section>
+  <section class="section related-section"><div class="container"><div class="section-heading"><div><div class="eyebrow">Keep exploring</div><h2>Related <em>tools.</em></h2></div></div><div class="tool-grid">{related.map((tool) => <a class="tool-card" href={`/tools/${tool.slug}/`}><div class="tool-card-top"><span class="tool-icon">{tool.icon}</span><span class="tool-category">{tool.category}</span></div><h3>{tool.title}</h3><p>{tool.description}</p><span class="tool-card-link">Use calculator →</span></a>)}</div></div></section>
   <script src="../scripts/calculators.js"></script>
 </BaseLayout>

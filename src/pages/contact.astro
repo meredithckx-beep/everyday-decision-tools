@@ -1,7 +1,253 @@
+
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Contact" description="Get in touch with Everyday Decision Tools about calculator feedback, corrections, or suggestions.">
-  <section class="page-hero"><div class="container narrow"><div class="eyebrow">Get in touch</div><h1>We’re listening.<br /><em>Let’s make it better.</em></h1><p class="lead">Have an idea for a calculator, spotted something that could be clearer, or found an issue? We’d like to hear from you.</p></div></section>
-  <section class="section"><div class="container narrow prose contact-panel"><h2>Send us a message</h2><p>For feedback and general inquiries, email:</p><a class="contact-email" href="mailto:hello@everydaydecisiontools.com">hello@everydaydecisiontools.com</a><p class="muted">Please include the calculator name and a short description if you are reporting an issue. We aim to make our tools clear and dependable, and appreciate thoughtful feedback.</p><p class="small-print">This is a contact address placeholder. Configure it with an inbox you monitor before publishing the site.</p></div></section>
+
+<BaseLayout
+  title="Contact & Feedback"
+  description="Send feedback, report issues, or suggest improvements for Everyday Decision Tools."
+>
+  <section class="page-hero">
+    <div class="container narrow">
+      <div class="eyebrow">Get in touch</div>
+      <h1>
+        We're listening.<br />
+        <em>Let's make it better.</em>
+      </h1>
+      <p class="lead">
+        Have an idea for a calculator, spotted something that could be clearer,
+        or found an issue? We'd like to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="prose contact-panel">
+        <h2>Send us feedback</h2>
+        <p>
+          Your feedback helps us improve our calculators and make them more useful.
+          Tell us what worked, what didn't, or what you'd like to see next.
+        </p>
+
+        <form
+          class="feedback-form"
+          action="https://formspree.io/f/mpppbrlk"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="feedback-type">What would you like to share?</label>
+            <select id="feedback-type" name="Feedback type" required>
+              <option value="" disabled selected hidden>Select a feedback type</option>
+              <option value="Bug or technical issue">Bug or technical issue</option>
+              <option value="Incorrect calculation or result">Incorrect calculation or result</option>
+              <option value="Feature request">Feature request</option>
+              <option value="Usability or design suggestion">Usability or design suggestion</option>
+              <option value="General feedback">General feedback</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="tool">Which tool is this about?</label>
+            <select id="tool" name="Calculator">
+              <option value="General / Entire website">General / Entire website</option>
+              <option value="Unit Price Calculator">Unit Price Calculator</option>
+              <option value="Gas Cost Calculator">Gas Cost Calculator</option>
+              <option value="Subscription Cost Calculator">Subscription Cost Calculator</option>
+              <option value="Appliance Electricity Cost Calculator">Appliance Electricity Cost Calculator</option>
+              <option value="Repair or Replace Calculator">Repair or Replace Calculator</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your feedback</label>
+            <textarea
+              id="message"
+              name="Message"
+              rows="7"
+              placeholder="Tell us what happened, what could be improved, or what you'd like us to add..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="email">
+              Email address <span class="optional">(optional)</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="Email"
+              placeholder="you@example.com"
+            />
+            <p class="field-hint">
+              Leave your email if you'd like us to follow up on your feedback.
+            </p>
+          </div>
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input
+              type="text"
+              id="website"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <button type="submit" class="feedback-submit">
+            Submit Feedback
+          </button>
+
+          <p class="form-note">
+            Thank you for helping us make Everyday Decision Tools better.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .contact-panel {
+      padding: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .feedback-form {
+      margin-top: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .optional {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .feedback-form input,
+    .feedback-form select,
+    .feedback-form textarea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 8px;
+      background-color: #181818;
+      color: #f2f2f2;
+      font: inherit;
+      font-size: 16px;
+      line-height: 1.5;
+      color-scheme: dark;
+    }
+
+    .feedback-form select {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 42px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f2f2f2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+    }
+
+    .feedback-form select option {
+      background-color: #181818;
+      color: #f2f2f2;
+    }
+
+    .feedback-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .feedback-form input::placeholder,
+    .feedback-form textarea::placeholder {
+      color: #999;
+      opacity: 1;
+    }
+
+    .feedback-form input:focus,
+    .feedback-form select:focus,
+    .feedback-form textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-color: var(--accent);
+    }
+
+    .field-hint,
+    .form-note {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .feedback-submit {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .feedback-submit:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .feedback-submit:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .honeypot {
+      position: absolute;
+      left: -5000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 560px) {
+      .contact-panel {
+        padding: 22px 18px;
+      }
+
+      .form-group {
+        padding: 13px;
+        margin-bottom: 18px;
+      }
+
+      .feedback-form select {
+        background-position: right 14px center;
+      }
+    }
+  </style>
 </BaseLayout>

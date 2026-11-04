@@ -1,0 +1,27 @@
+name: Build and package source ZIP
+on:
+  push:
+    branches:
+      - feature/calculator-expansion
+permissions:
+  contents: read
+  actions: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Create source ZIP
+        run: zip -r everyday-decision-tools.zip . -x ".git/*" "node_modules/*" "dist/*" ".astro/*"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: everyday-decision-tools-source
+          path: everyday-decision-tools.zip
+          if-no-files-found: error
+          retention-days: 7
