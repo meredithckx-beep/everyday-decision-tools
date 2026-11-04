@@ -1194,3 +1194,33 @@ a:focus-visible {
     transition: none !important;
   }
 }
+
+
+/* Calculator enhancements */
+.tool-step-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:24px;padding-top:15px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+.tool-step-nav a{color:var(--green);font-weight:700}
+.tool-step-nav span{font-variant-numeric:tabular-nums}
+.calculator-actions{display:flex;gap:10px;margin-top:16px}
+.button-secondary{background:#29342e;border:1px solid #465b4c;color:#a9cbb4;cursor:pointer}
+.button-secondary:hover{background:#34463a}
+.remove-product{float:right;border:1px solid #654b43;background:#342724;color:#e3b6a8;border-radius:5px;padding:5px 9px;font-size:10px;cursor:pointer}
+.comparison-output{margin-top:18px;padding:17px;background:#1a2020;border:1px solid var(--line);border-radius:7px;font-size:12px;color:var(--muted)}
+.comparison-winner{color:#a0d0ae;font-weight:700;font-size:14px;margin-bottom:12px}
+.comparison-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);margin:0}
+.comparison-row strong{color:var(--ink)}
+.comparison-row span{text-align:right}
+.comparison-foot{font-size:11px;margin:12px 0 0;line-height:1.7}
+.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.metric{min-width:0;padding:14px;background:#1d2225;border:1px solid var(--line);border-radius:7px}
+.metric span{display:block;color:var(--muted);font-size:10px;line-height:1.5;margin-bottom:7px}
+.metric strong{font-size:17px;color:var(--green);overflow-wrap:anywhere}
+.six-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sub-compare{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.sub-compare h2{margin-bottom:5px}
+.sub-compare .metric-grid{margin-top:15px}
+.checkbox-label{display:flex!important;align-items:center;gap:10px}
+.checkbox-label input{width:17px;height:17px;accent-color:var(--green)}
+[hidden]{display:none!important}
+.related-section{padding-top:20px}
+.related-section .tool-card{color:var(--ink)}
+@media(max-width:560px){.metric-grid,.six-metrics{grid-template-columns:1fr 1fr}.comparison-row{flex-direction:column;gap:4px}.comparison-row span{text-align:left}.tool-step-nav{font-size:10px}.calculator-actions .button{width:100%}}

@@ -3,26 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import { tools } from '../../data.js';
 ---
-
-<BaseLayout
-  title="All Calculators"
-  description="Explore all free everyday calculators, including unit price comparisons, cost per use, gas expenses, and subscription costs. Find the right tool for your next decision."
->
-  <section class="page-hero">
-    <div class="container narrow">
-      <div class="eyebrow">The toolkit</div>
-      <h1>Everyday tools.<br /><em>Clearer decisions.</em></h1>
-      <p class="lead">
-        Simple calculators for the costs and choices that come up in everyday life.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="tool-grid">
-        {tools.map((tool) => <ToolCard tool={tool} />)}
-      </div>
-    </div>
-  </section>
+<BaseLayout title="All Calculators" description="Explore free calculators for shopping, transportation, subscriptions, household energy, and appliance repair decisions.">
+  <section class="page-hero"><div class="container narrow"><div class="eyebrow">The toolkit</div><h1>Everyday tools.<br /><em>Clearer decisions.</em></h1><p class="lead">Simple calculators for the costs and choices that come up in everyday life.</p></div></section>
+  <section class="section"><div class="container"><div class="tool-grid">{tools.map((tool) => <ToolCard tool={tool} />)}</div></div></section>
 </BaseLayout>

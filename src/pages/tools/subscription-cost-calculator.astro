@@ -1,81 +1,11 @@
-
 ---
 import ToolShell from '../../components/ToolShell.astro';
 ---
-
-<ToolShell
-  title="Subscription Cost Calculator"
-  category="Everyday costs"
-  toolId="subscription-cost"
-  description="Compare daily, weekly, monthly, quarterly, semiannual, and annual subscription costs in one place."
-  intro="Enter your payment amount and billing frequency to see the equivalent cost across six different time periods."
-  steps={[
-    'Enter the amount you pay.',
-    'Choose how often that amount is charged.',
-    'Compare the equivalent costs across six time periods.',
-    'Use the breakdown to understand the long-term cost.'
-  ]}
-  note="Estimates use 365 days per year, 52 weeks per year, and 12 months per year. Actual billing dates and calendar periods may vary."
->
-  <h2>Subscription cost breakdown</h2>
-  <p class="form-intro">Enter your payment amount and billing frequency. All six cost estimates will update automatically.</p>
-
-  <div class="field-grid">
-    <div class="field">
-      <label for="payment">Payment amount ($)</label>
-      <div class="input-wrap">
-        <span>$</span>
-        <input
-          id="payment"
-          data-field="payment"
-          type="number"
-          min="0"
-          step="0.01"
-          value="0"
-        />
-      </div>
-    </div>
-
-    <div class="field">
-      <label for="frequency">This amount is charged</label>
-      <select id="frequency" data-field="frequency">
-        <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
-        <option value="monthly" selected>Monthly</option>
-        <option value="quarterly">Quarterly</option>
-        <option value="half-yearly">Semiannually</option>
-        <option value="yearly">Annually</option>
-      </select>
-    </div>
+<ToolShell title="Subscription Cost Calculator" category="Everyday costs" toolId="subscription-cost" description="Convert subscription payments across six periods and compare monthly and annual plans." intro="Enter a payment amount and billing frequency to see equivalent costs across six time periods. You can also compare monthly and annual pricing." steps={["Enter your current payment and billing frequency.","Review daily, weekly, monthly, quarterly, semiannual, and annual equivalents.","Enter monthly and annual plan prices to compare their yearly costs."]} note="Uses 365 days, 52 weeks, and 12 months per year. The annual-plan saving percentage is measured against the annualized monthly price.">
+  <h2>Subscription cost breakdown</h2><div class="field-grid">
+    <div class="field"><label for="payment">Payment amount ($)</label><div class="input-wrap"><span>$</span><input id="payment" data-field="payment" type="number" min="0" step="0.01" value="0" /></div></div>
+    <div class="field"><label for="frequency">Billing frequency</label><select id="frequency" data-field="frequency"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly" selected>Monthly</option><option value="quarterly">Quarterly</option><option value="half-yearly">Semiannually</option><option value="yearly">Annually</option></select></div>
   </div>
-
-  <div class="field" style="margin-top: 1.5rem;">
-    <h3>Cost comparison</h3>
-    <div class="field-grid">
-      <div class="field">
-        <label>Daily</label>
-        <strong data-period-result="daily">$0.00</strong>
-      </div>
-      <div class="field">
-        <label>Weekly</label>
-        <strong data-period-result="weekly">$0.00</strong>
-      </div>
-      <div class="field">
-        <label>Monthly</label>
-        <strong data-period-result="monthly">$0.00</strong>
-      </div>
-      <div class="field">
-        <label>Quarterly</label>
-        <strong data-period-result="quarterly">$0.00</strong>
-      </div>
-      <div class="field">
-        <label>Semiannually</label>
-        <strong data-period-result="half-yearly">$0.00</strong>
-      </div>
-      <div class="field">
-        <label>Annually</label>
-        <strong data-period-result="yearly">$0.00</strong>
-      </div>
-    </div>
-  </div>
+  <h3>Equivalent costs</h3><div class="metric-grid six-metrics">{['daily','weekly','monthly','quarterly','half-yearly','yearly'].map((period) => <div class="metric"><span>{period === 'half-yearly' ? 'Semiannually' : period[0].toUpperCase()+period.slice(1)}</span><strong data-period-result={period}>$0.00</strong></div>)}</div><p class="result-detail">Annual total: <strong data-sub-annual>$0.00</strong></p>
+  <div class="sub-compare"><h2>Monthly vs. annual plan</h2><p class="form-intro">Compare the yearly cost of paying monthly with a single annual payment.</p><div class="field-grid"><div class="field"><label for="monthly-price">Monthly price ($)</label><div class="input-wrap"><span>$</span><input id="monthly-price" data-field="monthlyPrice" type="number" min="0" step="0.01" value="0" /></div></div><div class="field"><label for="annual-price">Annual price ($)</label><div class="input-wrap"><span>$</span><input id="annual-price" data-field="annualPrice" type="number" min="0" step="0.01" value="0" /></div></div></div><div class="metric-grid"><div class="metric"><span>Monthly plan per year</span><strong data-monthly-year>$0.00</strong></div><div class="metric"><span>Annual plan per year</span><strong data-annual-year>$0.00</strong></div><div class="metric"><span>Annual plan savings</span><strong data-plan-saving>—</strong></div></div></div>
 </ToolShell>
