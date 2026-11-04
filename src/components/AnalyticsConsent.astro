@@ -1,0 +1,120 @@
+
+<div
+  id="analytics-consent"
+  class="analytics-consent"
+  role="region"
+  aria-labelledby="analytics-consent-title"
+  hidden
+>
+  <div class="analytics-consent__inner">
+    <div class="analytics-consent__content">
+      <h2 id="analytics-consent-title">Privacy preferences</h2>
+      <p>
+        We use optional Google Analytics to understand how visitors use
+        Everyday Decision Tools and improve our website. Analytics will
+        only be enabled if you accept.
+        Read our <a href="/privacy-policy/">Privacy Policy</a>.
+      </p>
+    </div>
+
+    <div class="analytics-consent__actions">
+      <button
+        type="button"
+        id="accept-analytics"
+        class="analytics-consent__button analytics-consent__button--accept"
+      >
+        Accept Analytics
+      </button>
+
+      <button
+        type="button"
+        id="reject-analytics"
+        class="analytics-consent__button analytics-consent__button--reject"
+      >
+        Reject Optional Analytics
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const measurementId = 'G-0JJZD07ZPS';
+  const storageKey = 'edt-analytics-consent-v1';
+
+  const panel = document.getElementById('analytics-consent');
+  const acceptButton = document.getElementById('accept-analytics');
+  const rejectButton = document.getElementById('reject-analytics');
+  const settingsButton = document.getElementById('open-privacy-settings');
+
+  const win = window as Window & {
+    __edtAnalyticsLoaded?: boolean;
+    dataLayer?: IArguments[];
+    gtag?: (...args: unknown[]) => void;
+  };
+
+  function loadAnalytics() {
+    if (win.__edtAnalyticsLoaded) return;
+
+    win.__edtAnalyticsLoaded = true;
+    win.dataLayer = win.dataLayer || [];
+
+    win.gtag = function (..._args: unknown[]) {
+      win.dataLayer?.push(arguments);
+    };
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src =
+      `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+
+    document.head.appendChild(script);
+
+    win.gtag('js', new Date());
+    win.gtag('config', measurementId);
+  }
+
+  function saveConsent(value: 'accepted' | 'rejected') {
+    const analyticsWasLoaded = Boolean(win.__edtAnalyticsLoaded);
+
+    try {
+      localStorage.setItem(storageKey, value);
+    } catch {
+      // The current choice still applies for this page session.
+    }
+
+    if (panel) panel.hidden = true;
+
+    if (value === 'accepted') {
+      loadAnalytics();
+    } else if (analyticsWasLoaded) {
+      // Reload so the rejected preference takes effect immediately.
+      window.location.reload();
+    }
+  }
+
+  let savedConsent: string | null = null;
+
+  try {
+    savedConsent = localStorage.getItem(storageKey);
+  } catch {
+    // Show the consent prompt if browser storage is unavailable.
+  }
+
+  if (savedConsent === 'accepted') {
+    loadAnalytics();
+  } else if (savedConsent !== 'rejected' && panel) {
+    panel.hidden = false;
+  }
+
+  acceptButton?.addEventListener('click', () => {
+    saveConsent('accepted');
+  });
+
+  rejectButton?.addEventListener('click', () => {
+    saveConsent('rejected');
+  });
+
+  settingsButton?.addEventListener('click', () => {
+    if (panel) panel.hidden = false;
+  });
+</script>
