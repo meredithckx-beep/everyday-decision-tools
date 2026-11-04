@@ -1,10 +1,9 @@
-
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-const maintenanceMode = true;
+const maintenanceMode = false;
 
 const {
   title,
@@ -33,7 +32,7 @@ const ogImageUrl = new URL('/og-image.png', Astro.site).href;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7f8f5" />
+    <meta name="theme-color" content="#111315" />
 
     <meta name="google-site-verification" content="sz6J8fE6ZBFmF44TGCBDnj9Tp4e_otnJnvDQ-FZfR14" />
 
@@ -69,57 +68,6 @@ const ogImageUrl = new URL('/og-image.png', Astro.site).href;
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content="Everyday Decision Tools — free calculators for smarter everyday spending." />
-
-    {maintenanceMode && (
-      <style>
-        {`
-          .maintenance-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 32px 20px;
-            background: #f7f8f5;
-            text-align: center;
-          }
-
-          .maintenance-content {
-            width: 100%;
-            max-width: 560px;
-          }
-
-          .maintenance-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
-          }
-
-          .maintenance-content h1 {
-            margin: 0 0 18px;
-            color: #24352c;
-            font-size: clamp(30px, 6vw, 42px);
-            line-height: 1.2;
-          }
-
-          .maintenance-content p {
-            margin: 0 auto 14px;
-            color: #66736b;
-            font-size: 16px;
-            line-height: 1.8;
-          }
-
-          .maintenance-label {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 7px 14px;
-            border-radius: 20px;
-            background: #e7eee8;
-            color: #42634d;
-            font-size: 13px;
-            font-weight: 600;
-          }
-        `}
-      </style>
-    )}
   </head>
 
   <body>
