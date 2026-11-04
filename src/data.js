@@ -1,0 +1,38 @@
+export const tools = [
+  {
+    slug: 'unit-price-calculator',
+    title: 'Unit Price Calculator',
+    category: 'Shopping',
+    description: 'Compare unit prices by ounce, pound, gram, fluid ounce, or item to find the best value.',
+    tag: 'Compare prices',
+    icon: '\u0024',
+    popular: true,
+  },
+  {
+    slug: 'cost-per-use-calculator',
+    title: 'Cost Per Use Calculator',
+    category: 'Shopping',
+    description: 'Calculate the cost per use of a product based on its purchase price, upkeep, and expected lifetime.',
+    tag: 'Smarter purchases',
+    icon: '\u23F1',
+    popular: true,
+  },
+  {
+    slug: 'gas-cost-calculator',
+    title: 'Gas Cost Calculator',
+    category: 'Transportation',
+    description: 'Estimate road trip fuel costs using driving distance, vehicle MPG, and the current gas price.',
+    tag: 'Trip planning',
+    icon: '\u26FD',
+    popular: true,
+  },
+  {
+    slug: 'subscription-cost-calculator',
+    title: 'Subscription Cost Calculator',
+    category: 'Everyday costs',
+    description: 'Calculate the annual cost of monthly, weekly, and yearly subscriptions and recurring payments.',
+    tag: 'Recurring expenses',
+    icon: '\u21BB',
+    popular: false,
+  },
+];

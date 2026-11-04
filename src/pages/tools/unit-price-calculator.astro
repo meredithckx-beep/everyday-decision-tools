@@ -1,0 +1,69 @@
+---
+import ToolShell from '../../components/ToolShell.astro';
+---
+
+<ToolShell
+  title="Unit Price Calculator"
+  category="Shopping"
+  toolId="unit-price"
+  description="Compare product unit prices to find the better deal. Calculate cost per ounce, pound, item, or another unit."
+  intro="Compare two products by the amount you get for the price. Find the lower cost per unit before you buy."
+  steps={[
+    "Enter each product's total price.",
+    "Enter the quantity in each package.",
+    "Choose the unit shown on each product's package.",
+    "Compare the cost per unit to see which is cheaper."
+  ]}
+  note="For a fair comparison, use the same measurement category for both products. This calculator automatically converts compatible units. It does not include taxes, coupons, or shipping."
+>
+  <h2>Compare two products</h2>
+  <p class="form-intro">Enter the price and package size for each option.</p>
+
+  <div class="compare-fields">
+    <fieldset class="product-field">
+      <legend>Product A</legend>
+
+      <label for="price-a">Price ($)</label>
+      <div class="input-wrap">
+        <span>$</span>
+        <input id="price-a" data-field="priceA" type="number" min="0" step="0.01" value="5.99" />
+      </div>
+
+      <label for="qty-a">Package quantity</label>
+      <input id="qty-a" data-field="qtyA" type="number" min="0.0001" step="any" value="24" />
+
+      <label for="unit-a">Unit</label>
+      <select id="unit-a" data-field="unitA">
+        <option value="oz">ounces (oz)</option>
+        <option value="lb">pounds (lb)</option>
+        <option value="count">items</option>
+        <option value="fl oz">fluid ounces (fl oz)</option>
+        <option value="g">grams (g)</option>
+        <option value="ml">milliliters (mL)</option>
+      </select>
+    </fieldset>
+
+    <fieldset class="product-field">
+      <legend>Product B</legend>
+
+      <label for="price-b">Price ($)</label>
+      <div class="input-wrap">
+        <span>$</span>
+        <input id="price-b" data-field="priceB" type="number" min="0" step="0.01" value="7.49" />
+      </div>
+
+      <label for="qty-b">Package quantity</label>
+      <input id="qty-b" data-field="qtyB" type="number" min="0.0001" step="any" value="36" />
+
+      <label for="unit-b">Unit</label>
+      <select id="unit-b" data-field="unitB">
+        <option value="oz">ounces (oz)</option>
+        <option value="lb">pounds (lb)</option>
+        <option value="count">items</option>
+        <option value="fl oz">fluid ounces (fl oz)</option>
+        <option value="g">grams (g)</option>
+        <option value="ml">milliliters (mL)</option>
+      </select>
+    </fieldset>
+  </div>
+</ToolShell>

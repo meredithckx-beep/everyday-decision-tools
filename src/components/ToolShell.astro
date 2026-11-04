@@ -1,0 +1,43 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const { title, description, intro, category, toolId, steps, note } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <section class="tool-hero">
+    <div class="container narrow">
+      <a class="back-link" href="/tools/">&#8592; All tools</a>
+      <div class="eyebrow">{category} calculator</div>
+      <h1>{title}</h1>
+      <p class="lead">{intro}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container calculator-layout">
+      <div class="calculator-card" data-calculator={toolId}>
+        <slot />
+        <div class="result-panel" aria-live="polite" aria-atomic="true">
+          <span class="result-label">Your result</span>
+          <strong class="result-value" data-result>Enter your numbers</strong>
+          <p class="result-detail" data-detail>Results update as you change the values.</p>
+        </div>
+      </div>
+
+      <aside class="tool-aside">
+        <div class="aside-card">
+          <h2>How it works</h2>
+          <ol>
+            {steps.map((step) => <li>{step}</li>)}
+          </ol>
+        </div>
+
+        <div class="aside-note">
+          <span aria-hidden="true">&#9432;</span>
+          <p>{note}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script src="../scripts/calculators.js"></script>
+</BaseLayout>

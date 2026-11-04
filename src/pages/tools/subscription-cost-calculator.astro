@@ -1,0 +1,7 @@
+---
+import ToolShell from '../../components/ToolShell.astro';
+---
+<ToolShell title="Subscription Cost Calculator" category="Everyday costs" toolId="subscription-cost" description="Calculate the yearly cost of monthly, weekly, or annual subscriptions and recurring payments." intro="Small recurring payments can add up. Convert a subscription into a yearly cost so it is easier to compare." steps={['Enter the subscription payment amount.','Choose how often you are charged.','See the monthly and annual equivalent.','Use the total to compare plans or review recurring expenses.']} note="The estimate assumes the payment amount and billing frequency stay the same for a full year. It excludes taxes, price increases, and one-time fees.">
+  <h2>Calculate recurring costs</h2><p class="form-intro">Enter the amount you pay and how often it renews.</p>
+  <div class="field-grid"><div class="field"><label for="payment">Payment amount ($)</label><div class="input-wrap"><span>$</span><input id="payment" data-field="payment" type="number" min="0" step="0.01" value="14.99" /></div></div><div class="field"><label for="frequency">Billing frequency</label><select id="frequency" data-field="frequency"><option value="weekly">Weekly</option><option value="monthly" selected>Monthly</option><option value="quarterly">Every 3 months</option><option value="yearly">Yearly</option></select></div></div>
+</ToolShell>

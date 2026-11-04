@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { tools } from '../data.js';
+const featured = tools.filter((tool) => tool.popular);
+---
+
+<BaseLayout
+  title="Free Everyday Calculators"
+  description="Use free everyday calculators to compare grocery unit prices, estimate cost per use, calculate gas expenses, and understand subscription costs. Simple tools, clear results, no sign-up."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Small decisions. Clearer answers.</div>
+        <h1>Make your next<br /><em>decision</em> a better one.</h1>
+        <p class="hero-lead">Everyday choices add up. Use simple, practical calculators to compare costs, understand value, and spend with confidence.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#tools">Explore free tools <span aria-hidden="true">&#8594;</span></a>
+          <span class="trust-note"><span aria-hidden="true">&#10003;</span> Free to use &middot; No sign-up</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Illustration of a calculator and a completed cost comparison">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-card art-card-back">
+          <span class="art-mini-label">YOUR SAVINGS</span>
+          <strong>$18.40</strong>
+          <span class="art-positive">&#8594; Better value</span>
+        </div>
+        <div class="calculator-illustration">
+          <div class="calc-top"><span>everyday</span><span class="calc-sun">&#10003;</span></div>
+          <div class="calc-screen">
+            <small>UNIT PRICE</small>
+            <strong>$0.08<span>/ oz</span></strong>
+          </div>
+          <div class="calc-keys">
+            <i></i><i></i><i></i><i class="key-accent"></i>
+            <i></i><i></i><i></i><i class="key-accent"></i>
+            <i></i><i></i><i></i><i class="key-dark"></i>
+          </div>
+        </div>
+        <div class="art-caption">
+          <span class="caption-check">&#10003;</span>
+          <span><strong>Good choice.</strong><small>More value for your money.</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof-strip">
+    <div class="container proof-inner">
+      <span><b>01</b> Practical, everyday math</span>
+      <span><b>02</b> Clear, useful results</span>
+      <span><b>03</b> Your numbers stay in your browser</span>
+    </div>
+  </section>
+
+  <section class="section tools-section" id="tools">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">The toolkit</div>
+          <h2>Tools for smarter<br /><em>everyday decisions.</em></h2>
+        </div>
+        <a class="text-link" href="/tools/">View all tools <span aria-hidden="true">&#8594;</span></a>
+      </div>
+      <div class="tool-grid">{featured.map((tool) => <ToolCard tool={tool} />)}</div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="container value-grid">
+      <div>
+        <div class="eyebrow">A simpler way to decide</div>
+        <h2>Less guesswork.<br /><em>More confidence.</em></h2>
+      </div>
+      <div class="value-copy">
+        <p>Not every purchase needs a spreadsheet. Sometimes you just need one clear number to see which option makes sense.</p>
+        <p>Our calculators focus on the everyday questions that are easy to overthink&mdash;from grocery unit prices to the real cost of a subscription.</p>
+        <a class="text-link" href="/about/">Learn about our approach <span aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bottom-cta">
+    <div class="container bottom-cta-inner">
+      <div>
+        <div class="eyebrow">Start with one small decision</div>
+        <h2>Clarity is a good place<br />to start.</h2>
+      </div>
+      <a class="button button-light" href="/tools/">Browse all calculators <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </section>
+</BaseLayout>
